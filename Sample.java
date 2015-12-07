@@ -2,42 +2,37 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-
 public class Calculate {
 
-	
 	public static final double GAS_CONSTANT = .0820574;
-	
+
 	public static void main(String[] args) throws FileNotFoundException {
-		
-		
-		
-		
-		
+		System.out.println(halfLife(.02));
+		System.out.println(rateConstant(0.1, .2, .02));
 	}
 	
+	public static double rateConstant(double init, double t, double halfLife) {
+		return init / (Math.pow(2, (t/halfLife)));
+	}
 	
-	
-	
+	public static double halfLife(double halfLife) {
+		return Math.log(2) / halfLife;
+	}
+
+	public static double limitingReactant(double g, double mm, double v) {
+		return (g / mm) / v;
+	}
+
 	public static double partialPressure(double v, double m, double mm, double t) {
-		double answer = 0.0;
-		
-		answer = (m/mm) * GAS_CONSTANT * (t+273);
-		
-		return (answer/v);
-		
-		
-		/*
-		 * double pp1 = partialPressure(9, 9.07, 44.01, 9.21);
-		double pp2 = partialPressure(9, 18, 108.07,  9.21);
-		double total = pp1 + pp2;
-		System.out.println("mol1 " + pp1/total);
-		System.out.println("PP1 "+  pp1);
-		System.out.println("mol2 " + pp2/total);
-		System.out.println("PP2 " + pp2);
-		
-		System.out.println("Total " + total );
-		 */
+		return ((m / mm) * GAS_CONSTANT * (t + 273) / v);
 	}
 	
+	public static double reactantInSolution(double mol, double mm1, double v) {
+		return (mol * v) * mm1;
+	}
+
+	public static double reactantInSolution(double m1, double mm1, double mm2,
+			double v) {
+		return ((m1 / mm1) * mm2) / v;
+	}
 }
