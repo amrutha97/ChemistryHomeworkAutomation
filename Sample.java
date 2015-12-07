@@ -7,8 +7,12 @@ public class Calculate {
 	public static final double GAS_CONSTANT = .0820574;
 
 	public static void main(String[] args) throws FileNotFoundException {
-		System.out.println(halfLife(.02));
-		System.out.println(rateConstant(0.1, .2, .02));
+	
+		System.out.println(rateLaw(40, 0, .0847, 1));
+	}
+	
+	public static double rateLaw(double t1, double t2, double c1, double c2) {
+		return (Math.log(c2) - Math.log(c1)) / (60*(t2-t1));
 	}
 	
 	public static double rateConstant(double init, double t, double halfLife) {
