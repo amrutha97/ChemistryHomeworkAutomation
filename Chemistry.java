@@ -8,11 +8,15 @@ public class Calculate {
 
 	public static void main(String[] args) throws FileNotFoundException {
 	
-		System.out.println(rateLaw(40, 0, .0847, 1));
+		System.out.println(molarmassDensityConversion(130, 1.02, 1, 1.56));
+	}
+	
+	public static double molarmassDensityConversion(double t, double v, double p, double m) {
+		return (m/v)*(GAS_CONSTANT*(t+273)/p);
 	}
 	
 	public static double rateLaw(double t1, double t2, double c1, double c2) {
-		return (Math.log(c2) - Math.log(c1)) / (60*(t2-t1));
+		return (Math.log(c2) - Math.log(c1)) / ((t2-t1));
 	}
 	
 	public static double rateConstant(double init, double t, double halfLife) {
